@@ -1,23 +1,21 @@
-import React from 'react'
+import React, { useState } from "react";
 
-const Folder = ({data}) => {
-  return (
-    <div>
+const Folder = ({ data }) => {
+  const [expand, setExpand] = useState(false);
+  if (data.isFolder) {
+    return (
+      <div className="folder" onClick={() => setExpand(!expand)}>
         📁{data.name}
-        {/* {data.map((da) => (
-            <div className="bg-pink-200 w-2/12 mx-2 my-2 ">
-              {da.items.name}
-            </div>
-          ))} */}
-          <div>
-          {data.items.map((da) => (
-            <div className="bg-pink-200 w-2/12 mx-2 my-2 ">
-              {da.name}
-            </div>
-          ))}
-          </div>
-    </div>
-  )
-}
+        <div style={{ display: expand ? "block" : "none", paddingLeft: 25 }}>
+          {data.items.map((da) => {
+            return <Folder data={da} />;
+          })}
+        </div>
+      </div>
+    );
+  } else {
+    return <span>📃{data.name}</span>;
+  }
+};
 
-export default Folder
+export default Folder;
