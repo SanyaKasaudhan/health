@@ -10,6 +10,7 @@ const Folder = ({ data }) => {
   const handleNewFolder = (e) =>{
     e.stopPropagation();
   }
+  
   if (data.isFolder) {
     return (
     <div>
