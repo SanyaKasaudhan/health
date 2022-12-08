@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client"
+
+const client=new ApolloClient({
+  url:"https://rickandmortyapi.com/graphql"
+  cache: InMemoryCache()
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
